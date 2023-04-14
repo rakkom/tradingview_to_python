@@ -50,23 +50,23 @@ You can set up **raspberry pi system to run webhook_listner.py 24/7** and set up
 I recommend you to setup firewall and all necessary security setup as well due to smee.
 
 ## cron setup
-edit cron
+Edit cron. this command will open a file.
 ```bash
 crontab -e
 ```
-setup time for cron
+Set up time for cron. You can just copy paste it in the file. But make sure you replace * for what you want.
 ```bash
 * * * * * /home/user/checker_BICwA.py >> /home/user/cronjob_BICwA.log 2>&1
 * * * * * /home/user/checker_darvasbox.py >> /home/user/cronjob_darvasbox.log 2>&1
 ```
 
-give permissions to the python code to be run by cron
+Give permissions to the python code to be run by cron.
 ```bash
 chmod +x /home/user/checker_BICwA.py
 chmod +x /home/user/checker_darvasbox.py
 ```
 
-check the status of cron and start cron
+Check the status of cron and start cron. You need to manually start cron.
 ```bash
 sudo systemctl status cron
 sudo systemctl start cron
