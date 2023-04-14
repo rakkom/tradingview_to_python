@@ -3,13 +3,14 @@ This bot receives alerts from TradingView as webhook and run python code to plac
 
 1. TradingView --webhook--> smee --webhook--> webhook_listner.py on localhost (raspberry pi)
 
-:it places buy orders and creates json file to track the order records>
-
-2. webhook_lisner.py --> BICwA.py OR  darvasbox.py
-
-<it places the counter orders and run every x hours to monitor order records and current price of btc>
+2. webhook_lisner.py --> BICwA.py OR darvasbox.py
 
 3. cron --> checker_BICwA.py AND checker_darvasbox.py
+
+## explanations
+1 listens to webhook alert from TradingView
+2 places buy orders and creates json file to track the order records
+3 places the counter orders and run every x hours to monitor order records and current price of btc
 
 # External services and additional setup
 This bot requires TradingView, smee and cron setup.
