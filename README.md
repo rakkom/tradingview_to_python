@@ -35,6 +35,15 @@ The alerts from TradingView should appear as follows:
 **{"strategy":"darvasbox"}**
 
 # § Usage: manual version 
+
+You will likely need to download some libraries to run this code. Some examples include:
+
+```bash
+pip install Flask
+pip install pybit
+pip install requests
+```
+
 You must execute webhook_listener.py on your localhost.
 
 ```bash
