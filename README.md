@@ -1,15 +1,15 @@
 # Explanation
 This bot receives alerts from TradingView as webhook and run python code to place orders on raspberry pi. The exchange this bot uses is Bybit and the pair is BTCUSDC. USDC pairs are free from trading fees. I will skip the set up details for raspberry pi.
 
-TradingView --webhook--> smee --webhook--> webhook_listner.py on localhost (raspberry pi)
+1. TradingView --webhook--> smee --webhook--> webhook_listner.py on localhost (raspberry pi)
 
 <it places buy orders and creates json file to track the order records>
 
-webhook_lisner.py --> BICwA.py OR  darvasbox.py
+2. webhook_lisner.py --> BICwA.py OR  darvasbox.py
 
 <it places the counter orders and run every x hours to monitor order records and current price of btc>
 
-cron --> checker_BICwA.py AND checker_darvasbox.py
+3. cron --> checker_BICwA.py AND checker_darvasbox.py
 
 # External services and additional setup
 This bot requires TradingView, smee and cron setup.
