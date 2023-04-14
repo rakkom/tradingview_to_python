@@ -36,6 +36,13 @@ The alerts from TradingView should appear as follows:
 
 # § Usage: manual version 
 
+It is recommended to use a virtual environment for this bot.
+
+```bash
+python3 -m venv myenv
+source myenv/bin/activate
+```
+
 You will likely need to download some libraries to run this code. Some examples include:
 
 ```bash
