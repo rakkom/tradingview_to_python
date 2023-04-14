@@ -126,3 +126,6 @@ Verify the status of Cron and initiate it. Remember, you must manually start Cro
 sudo systemctl status cron
 sudo systemctl start cron
 ```
+
+# Comments
+If you employ TradingView alerts for both buy and sell orders, setting up Cron is not necessary. However, you will need to modify the alert to include "side" data and subsequently adjust webhook_listener.py to accommodate these changes.
