@@ -5,16 +5,11 @@ TradingView --webhook--> smee --webhook--> webhook_listner.py on localhost (rasp
 
 <it places buy orders and creates json file to track the order records>
 
-webhook_lisner.py --> BICwA.py
-
-                  --> darvasbox.py
+webhook_lisner.py --> BICwA.py OR  darvasbox.py
 
 <it places the counter orders and run every x hours to monitor order records and current price of btc>
 
-cron --> checker_BICwA
-
-     --> checker_darvasbox.py
-
+cron --> checker_BICwA AND checker_darvasbox.py
 
 # External services and additional setup
 This bot requires TradingView, smee and cron setup.
