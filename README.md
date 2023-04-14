@@ -25,11 +25,11 @@ This bot requires TradingView, smee and cron setup, and of course Bybit.
 
 I used BICwA and darvasbox strategy as samples here. The code for these strategies are not provided in this repo. Therefore, you need to set up alerts on TradingView on your own. 
 
-Alert from TradingView should look like this:
+## TradvingView Alert format
+Alerts from TradingView should look like this:
 
-**{"strategy":"BICwA"}** in this case.
+**{"strategy":"BICwA"}**
 
-Additionally, darvasbox.py and BICwA.py are 98% same. checker_BICwA.py and checker_darvasbox.py are also 98% same. But I needed json files for each separatedly, so I just copied and changed only the json file name.
-
+# Full automation
 You can set up **raspberry pi system to run webhook_listner.py 24/7** and set up **cron to run checker_xxx.py every x hours**.
 I recommend you to setup firewall and all necessary security setup as well due to smee.
