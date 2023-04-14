@@ -93,7 +93,8 @@ User=PI
 ```
 
 ## cron setup
-Edit cron. this command will open a file.
+Edit Cron: This command will open the corresponding file for modification.
+
 ```bash
 crontab -e
 ```
