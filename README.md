@@ -52,12 +52,35 @@ I recommend you to setup firewall and all necessary security setup as well due t
 ## systemd setup for webhook_listner.py and smee
 You need to run both smee and webhook_lisnter.py all the time. Therefore, it is better to set up system to run these 24/7.
 
+### for webhook_listner.py
+```bash
+sudo nano /etc/systemd/system/webhook_listener.service
+```
+It will open a file so copy paste this.
+```bash
+[Unit] Description=Webhook Listener Service After=network.target
+[Service] ExecStart=/usr/bin/python /home/user/webhook_listener.py 
+WorkingDirectory=/home/user/ 
+StandardOutput=inherit 
+StandardError=inherit 
+Restart=always 
+User=pi
+[Install] WantedBy=multi-user.target
+```
+
+### for smee
 ```bash
 sudo nano /etc/systemd/system/smee.service
 ```
+It will open a file so copy paste this.
 ```bash
 [Unit] Description=Smee Webhook Tunnel Service After=network.target
-[Service] ExecStart=/usr/bin/smee --url https://smee.io/yoursmeeurl --target http://localhost:5000/webhook WorkingDirectory=/home/user/ StandardOutput=inherit StandardError=inherit Restart=always User=pi
+[Service] ExecStart=/usr/bin/smee --url https://smee.io/yoursmeeurl --target http://localhost:5000/webhook 
+WorkingDirectory=/home/user/ 
+StandardOutput=inherit 
+StandardError=inherit 
+Restart=always 
+User=pi
 [Install] WantedBy=multi-user.target
 ```
 
