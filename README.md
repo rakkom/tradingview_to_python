@@ -49,23 +49,24 @@ python checker_darvasbox.py
 You can set up **raspberry pi system to run webhook_listner.py 24/7** and set up **cron to run checker_xxx.py every x hours**.
 I recommend you to setup firewall and all necessary security setup as well due to smee.
 
-## edit cron
+## cron setup
+edit cron
 ```bash
 crontab -e
 ```
-## setup time for cron
+setup time for cron
 ```bash
 * * * * * /home/user/checker_BICwA.py >> /home/user/cronjob_BICwA.log 2>&1
 * * * * * /home/user/checker_darvasbox.py >> /home/user/cronjob_darvasbox.log 2>&1
 ```
 
-## give permissions to the python code to be run by cron
+give permissions to the python code to be run by cron
 ```bash
 chmod +x /home/user/checker_BICwA.py
 chmod +x /home/user/checker_darvasbox.py
 ```
 
-## check the status of cron and start cron
+check the status of cron and start cron
 ```bash
 sudo systemctl status cron
 sudo systemctl start cron
