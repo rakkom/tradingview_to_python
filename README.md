@@ -14,7 +14,7 @@ This bot is designed to receive alerts from **TradingView** via webhooks and exe
 
 3. Initiates counter orders, running every specified number of hours to monitor order records and the current price of BTC.
 
-# External services and additional setup
+# External services
 This bot necessitates the setup of TradingView, Smee, Cron, and, naturally, Bybit.
 
 - TradingView: https://www.tradingview.com/
