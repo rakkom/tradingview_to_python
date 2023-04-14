@@ -132,7 +132,7 @@ If you employ TradingView alerts for both buy and sell orders, setting up Cron i
 
 To accomplish this, you will need to pass the "side" data from the webhook to the "strategy_for_buy&sell.py" file.
 
-webhook_listner.py
+## webhook_listner.py
 ```python
 def handle_webhook():
     data = request.json
@@ -149,7 +149,7 @@ def handle_webhook():
 
 To be able to use the "side" data as an argument, you should include the following code in "strategy_for_buy&sell.py".
 
-strategy_for_buy&sell.py
+## strategy_for_buy&sell.py
 ```python
 import argparse
 
