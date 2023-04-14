@@ -3,7 +3,7 @@ This bot receives alerts from TradingView as webhook and run python code to plac
 
 1. TradingView --webhook--> smee --webhook--> webhook_listner.py on localhost (raspberry pi)
 
-<it places buy orders and creates json file to track the order records>
+:it places buy orders and creates json file to track the order records>
 
 2. webhook_lisner.py --> BICwA.py OR  darvasbox.py
 
