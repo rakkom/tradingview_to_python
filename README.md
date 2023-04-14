@@ -30,6 +30,8 @@ Alerts from TradingView should look like this:
 
 **{"strategy":"BICwA"}**
 
+**{"strategy":"darvasbox"}**
+
 # Full automation
 You can set up **raspberry pi system to run webhook_listner.py 24/7** and set up **cron to run checker_xxx.py every x hours**.
 I recommend you to setup firewall and all necessary security setup as well due to smee.
