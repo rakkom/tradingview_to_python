@@ -102,7 +102,7 @@ sudo systemctl daemon-reload
 sudo systemctl enable smee.service
 ```
 
-## cron setup
+## Cron setup
 Edit Cron: This command will open the corresponding file for modification.
 
 ```bash
