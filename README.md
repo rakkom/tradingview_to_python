@@ -129,3 +129,17 @@ sudo systemctl start cron
 
 # Comments
 If you employ TradingView alerts for both buy and sell orders, setting up Cron is not necessary. However, you will need to modify the alert to include "side" data and subsequently adjust webhook_listener.py to accommodate these changes.
+
+```python
+def handle_webhook():
+    data = request.json
+    strategy = data.get("strategy")
+    side = data.get("side")
+
+    if strategy == "strategy_for_buy&sell":
+        subprocess.run(["python", "strategy_for_buy&sell.py", "--side", side])
+    elif strategy == "BICwA":
+        subprocess.run(["python", "BICwA.py"])
+
+    return "OK"
+ ```
