@@ -49,6 +49,18 @@ python checker_darvasbox.py
 You can set up **raspberry pi system to run webhook_listner.py 24/7** and set up **cron to run checker_xxx.py every x hours**.
 I recommend you to setup firewall and all necessary security setup as well due to smee.
 
+## systemd setup for webhook_listner.py and smee
+You need to run both smee and webhook_lisnter.py all the time. Therefore, it is better to set up system to run these 24/7.
+
+```bash
+sudo nano /etc/systemd/system/smee.service
+```
+```bash
+[Unit] Description=Smee Webhook Tunnel Service After=network.target
+[Service] ExecStart=/usr/bin/smee --url https://smee.io/UQCAjgN9ibszu9k --target http://localhost:5000/webhook WorkingDirectory=/home/pi/ StandardOutput=inherit StandardError=inherit Restart=always User=pi
+[Install] WantedBy=multi-user.target
+```
+
 ## cron setup
 Edit cron. this command will open a file.
 ```bash
