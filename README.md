@@ -10,9 +10,9 @@ This bot is designed to receive alerts from **TradingView** via webhooks and exe
 ## Descriptions for each code segment
 1. Receives webhook alerts from TradingView.
 
-2. Executes buy orders and generates a JSON file to keep track of order records.
+2. Executes buy orders and generates JSON files to keep track of order records.
 
-3. Initiates counter orders, running every specified number of hours to monitor order records and the current price of BTC.
+3. Initiates counter orders based on previously generated the JSON files, running every specified number of hours to monitor order records and the current price of BTC.
 
 # External services
 This bot necessitates the setup of TradingView, Smee, Cron, and, naturally, Bybit.
