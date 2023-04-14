@@ -34,9 +34,11 @@ Alerts from TradingView should look like this:
 
 # Usage
 
+```bash
 python webhook_listner.py
 python checker_BICwA.py
 python checker_darvasbox.py
+```
 
 # Full automation
 You can set up **raspberry pi system to run webhook_listner.py 24/7** and set up **cron to run checker_xxx.py every x hours**.
