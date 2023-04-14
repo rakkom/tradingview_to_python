@@ -17,9 +17,9 @@ This bot receives alerts from TradingView as webhook and run python code to plac
 # External services and additional setup
 This bot requires TradingView, smee and cron setup.
 
-TradingView: https://www.tradingview.com/
+- TradingView: https://www.tradingview.com/
 
-smee: https://smee.io/
+- smee: https://smee.io/
 
 I used BICwA and darvasbox strategy as samples here. The code for these strategies are not provided in this repo. Therefore, you need to set up alerts on TradingView on your own.
 
