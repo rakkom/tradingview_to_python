@@ -52,7 +52,7 @@ python checker_BICwA.py
 python checker_darvasbox.py
 ```
 
-# § Usage: automatatic version
+# § Usage: automatic version
 To achieve full automation, configure your Raspberry Pi system to run webhook_listener.py continuously, 24/7, and schedule Cron to execute checker_xxx.py every x hours. It is also recommended to establish a firewall and implement any necessary security measures due to smee's involvement.
 
 ## systemd setup for webhook_listner.py and smee
