@@ -3,9 +3,9 @@ This bot receives alerts from **TradingView** as webhook and run python code to 
 
 1. TradingView --webhook--> smee --webhook--> webhook_listner.py on localhost (raspberry pi)
 
-2. webhook_lisner.py --> BICwA.py OR darvasbox.py
+2. webhook_lisner.py --> BICwA.py **OR** darvasbox.py
 
-3. cron --> checker_BICwA.py AND checker_darvasbox.py
+3. cron --> checker_BICwA.py **AND** checker_darvasbox.py
 
 ## explanations for each code
 1. listens to webhook alert from TradingView
