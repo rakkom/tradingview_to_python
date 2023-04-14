@@ -57,7 +57,7 @@ sudo nano /etc/systemd/system/smee.service
 ```
 ```bash
 [Unit] Description=Smee Webhook Tunnel Service After=network.target
-[Service] ExecStart=/usr/bin/smee --url https://smee.io/UQCAjgN9ibszu9k --target http://localhost:5000/webhook WorkingDirectory=/home/pi/ StandardOutput=inherit StandardError=inherit Restart=always User=pi
+[Service] ExecStart=/usr/bin/smee --url https://smee.io/yoursmeeurl --target http://localhost:5000/webhook WorkingDirectory=/home/user/ StandardOutput=inherit StandardError=inherit Restart=always User=pi
 [Install] WantedBy=multi-user.target
 ```
 
