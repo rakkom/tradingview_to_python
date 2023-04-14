@@ -8,11 +8,11 @@ This bot receives alerts from TradingView as webhook and run python code to plac
 3. cron --> checker_BICwA.py AND checker_darvasbox.py
 
 ## explanations for each code
-1 listens to webhook alert from TradingView
+1. listens to webhook alert from TradingView
 
-2 places buy orders and creates json file to track the order records
+2. places buy orders and creates json file to track the order records
 
-3 places the counter orders and run every x hours to monitor order records and current price of btc
+3. places the counter orders and run every x hours to monitor order records and current price of btc
 
 # External services and additional setup
 This bot requires TradingView, smee and cron setup.
