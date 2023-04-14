@@ -74,7 +74,11 @@ Restart=always
 User=PI
 [Install] WantedBy=multi-user.target
 ```
-
+You need to enable webhook_listner by running this command.
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable webhook_listener.service
+```
 ### for smee
 ```bash
 sudo nano /etc/systemd/system/smee.service
@@ -90,6 +94,12 @@ StandardError=inherit
 Restart=always 
 User=PI
 [Install] WantedBy=multi-user.target
+```
+
+You need to enable webhook_listner by running this command.
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable smee.service
 ```
 
 ## cron setup
