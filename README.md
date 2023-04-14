@@ -56,15 +56,15 @@ You need to run both smee and webhook_lisnter.py all the time. Therefore, it is 
 ```bash
 sudo nano /etc/systemd/system/webhook_listener.service
 ```
-It will open a file so copy paste this.
+It will open a file so copy paste this. Replace fully capitalised words as your data.
 ```bash
 [Unit] Description=Webhook Listener Service After=network.target
-[Service] ExecStart=/usr/bin/python /home/user/webhook_listener.py 
-WorkingDirectory=/home/user/ 
+[Service] ExecStart=/usr/bin/python /home/USER/webhook_listener.py 
+WorkingDirectory=/home/USER/ 
 StandardOutput=inherit 
 StandardError=inherit 
 Restart=always 
-User=pi
+User=PI
 [Install] WantedBy=multi-user.target
 ```
 
@@ -72,15 +72,15 @@ User=pi
 ```bash
 sudo nano /etc/systemd/system/smee.service
 ```
-It will open a file so copy paste this.
+It will open a file so copy paste this. Replace fully capitalised words as your data.
 ```bash
 [Unit] Description=Smee Webhook Tunnel Service After=network.target
-[Service] ExecStart=/usr/bin/smee --url https://smee.io/yoursmeeurl --target http://localhost:5000/webhook 
-WorkingDirectory=/home/user/ 
+[Service] ExecStart=/usr/bin/smee --url https://smee.io/YOURSMEEURL --target http://localhost:5000/webhook 
+WorkingDirectory=/home/USER/ 
 StandardOutput=inherit 
 StandardError=inherit 
 Restart=always 
-User=pi
+User=PI
 [Install] WantedBy=multi-user.target
 ```
 
