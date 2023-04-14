@@ -7,7 +7,7 @@ This bot is designed to receive alerts from **TradingView** via webhooks and exe
 
 3. cron --> checker_BICwA.py **AND** checker_darvasbox.py
 
-## Descriptions for Each Code Segment
+## Descriptions for each code segment
 1. Receives webhook alerts from TradingView.
 
 2. Executes buy orders and generates a JSON file to keep track of order records.
