@@ -32,7 +32,7 @@ The alerts from TradingView should appear as follows:
 
 **{"strategy":"darvasbox"}**
 
-# § Usage: Manual version 
+# § Usage: manual version 
 You must execute webhook_listener.py on your localhost.
 
 ```bash
