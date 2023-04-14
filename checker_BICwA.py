@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# this part is necessary for cron
+
 import json
 import time
 from datetime import datetime
@@ -15,7 +17,7 @@ current_timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 print(f"CRON job executed at: {current_timestamp}")
 end_timestamp = datetime.fromtimestamp(datetime.now().timestamp())
 
-# Load order records from JSON file
+# Load order records from JSON file. Pay attention the json file name.
 with open('/home/user/order_records_BICwA.json', 'r') as f:
     order_records = json.load(f)
 
