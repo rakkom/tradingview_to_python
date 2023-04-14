@@ -27,7 +27,7 @@ I used BICwA and darvasbox strategy as samples here. The code for these strategi
 
 Alert from TradingView should look like this:
 
-{"strategy":"BICwA"} in this case.
+**{"strategy":"BICwA"}** in this case.
 
 Additionally, darvasbox.py and BICwA.py are 98% same. checker_BICwA.py and checker_darvasbox.py are also 98% same. But I needed json files for each separatedly, so I just copied and changed only the json file name.
 
