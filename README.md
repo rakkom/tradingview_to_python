@@ -1,5 +1,5 @@
 # Overview
-This bot receives alerts from **TradingView** as webhook and run python code to place orders on raspberry pi. The exchange this bot uses is **Bybit** and the pair is BTCUSDC. **USDC pairs are free from trading fees.** I skip the set up details for raspberry pi. BICwA and darvasbox are names of strategies on TradingView.
+This bot is designed to receive alerts from **TradingView** via webhooks and execute Python code to place orders on a **Raspberry Pi**. It utilizes the **Bybit exchange** and operates with the **BTCUSDC** trading pair. Notably, USDC pairs are exempt from trading fees. The setup details for the Raspberry Pi will not be covered in this explanation. BICwA and darvasbox are the names of strategies employed within the TradingView platform.
 
 1. TradingView --webhook--> smee --webhook--> webhook_listner.py on localhost (raspberry pi)
 
@@ -7,15 +7,15 @@ This bot receives alerts from **TradingView** as webhook and run python code to 
 
 3. cron --> checker_BICwA.py **AND** checker_darvasbox.py
 
-## explanations for each code
-1. listens to webhook alert from TradingView
+## Descriptions for Each Code Segment
+1. Receives webhook alerts from TradingView.
 
-2. places buy orders and creates json file to track the order records
+2. Executes buy orders and generates a JSON file to keep track of order records.
 
-3. places the counter orders and run every x hours to monitor order records and current price of btc
+3. Initiates counter orders, running every specified number of hours to monitor order records and the current price of BTC.
 
 # External services and additional setup
-This bot requires TradingView, smee and cron setup, and of course Bybit.
+This bot necessitates the setup of TradingView, Smee, Cron, and, naturally, Bybit.
 
 - TradingView: https://www.tradingview.com/
 
@@ -23,40 +23,47 @@ This bot requires TradingView, smee and cron setup, and of course Bybit.
 
 - Bybit: https://www.bybit.com/
 
-I used BICwA and darvasbox strategy as samples here. The code for these strategies are not provided in this repo. Therefore, you need to set up alerts on TradingView on your own. 
+In this example, I employed the BICwA and darvasbox strategies as samples. However, the code for these strategies is not included in this repository. Consequently, you will need to configure alerts on TradingView independently.
 
 ## TradvingView Alert format
-Alerts from TradingView should look like this:
+The alerts from TradingView should appear as follows:
 
 **{"strategy":"BICwA"}**
 
 **{"strategy":"darvasbox"}**
 
-# Usage
-You have to run webhook_listner.py on your localhost.
+# Usage: Manual version 
+You must execute webhook_listener.py on your localhost.
 
 ```bash
 python webhook_listner.py
 ```
 
-You have to run checker_xxx.py every x hour manually.
+You need to run this command, as well, for the smee connection.
+
+```bash
+smee --url https://smee.io/YOURSMEEURL --target http://localhost:5000/webhook
+```
+
+Additionally, you need to manually run checker_xxx.py every x hours.
+
 ```bash
 python checker_BICwA.py
 python checker_darvasbox.py
 ```
 
-# Full automation
-You can set up **raspberry pi system to run webhook_listner.py 24/7** and set up **cron to run checker_xxx.py every x hours**.
-I recommend you to setup firewall and all necessary security setup as well due to smee.
+# Usage: automatatic version
+To achieve full automation, configure your Raspberry Pi system to run webhook_listener.py continuously, 24/7, and schedule Cron to execute checker_xxx.py every x hours. It is also recommended to establish a firewall and implement any necessary security measures due to smee's involvement.
 
 ## systemd setup for webhook_listner.py and smee
-You need to run both smee and webhook_lisnter.py all the time. Therefore, it is better to set up system to run these 24/7.
+Since both smee and webhook_listener.py need to run constantly, it is advisable to set up the system for 24/7 operation. Here is how.
 
 ### for webhook_listner.py
 ```bash
 sudo nano /etc/systemd/system/webhook_listener.service
 ```
-It will open a file so copy paste this. Replace fully capitalised words as your data.
+The file will open, allowing you to copy and paste the content. Replace the words in all capital letters with your relevant information.
+
 ```bash
 [Unit] Description=Webhook Listener Service After=network.target
 [Service] ExecStart=/usr/bin/python /home/USER/webhook_listener.py 
@@ -72,7 +79,8 @@ User=PI
 ```bash
 sudo nano /etc/systemd/system/smee.service
 ```
-It will open a file so copy paste this. Replace fully capitalised words as your data.
+Again, the file will open, allowing you to copy and paste the content. Replace the words in all capital letters with your relevant information.
+
 ```bash
 [Unit] Description=Smee Webhook Tunnel Service After=network.target
 [Service] ExecStart=/usr/bin/smee --url https://smee.io/YOURSMEEURL --target http://localhost:5000/webhook 
@@ -89,19 +97,20 @@ Edit cron. this command will open a file.
 ```bash
 crontab -e
 ```
-Set up time for cron. You can just copy paste it in the file. But make sure you replace * for what you want.
+Configure the time settings for Cron. You can simply copy and paste the content into the file, but ensure that you replace the asterisks (*) with the desired values.
+
 ```bash
 * * * * * /home/user/checker_BICwA.py >> /home/user/cronjob_BICwA.log 2>&1
 * * * * * /home/user/checker_darvasbox.py >> /home/user/cronjob_darvasbox.log 2>&1
 ```
 
-Give permissions to the python code to be run by cron.
+Grant the necessary permissions for the Python code to be executed by Cron.
 ```bash
 chmod +x /home/user/checker_BICwA.py
 chmod +x /home/user/checker_darvasbox.py
 ```
 
-Check the status of cron and start cron. You need to manually start cron.
+Verify the status of Cron and initiate it. Remember, you must manually start Cron.
 ```bash
 sudo systemctl status cron
 sudo systemctl start cron
