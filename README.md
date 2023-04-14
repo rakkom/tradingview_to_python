@@ -23,7 +23,7 @@ This bot requires TradingView, smee and cron setup.
 
 I used BICwA and darvasbox strategy as samples here. The code for these strategies are not provided in this repo. Therefore, you need to set up alerts on TradingView on your own. 
 
-'darvasbox.py and BICwA.py are 98% same. checker_BICwA.py and checker_darvasbox.py are also 98% same. But I needed json files for each separatedly, so I just copied and changed only the json file name.'
+darvasbox.py and BICwA.py are 98% same. checker_BICwA.py and checker_darvasbox.py are also 98% same. But I needed json files for each separatedly, so I just copied and changed only the json file name.
 
 You can set up raspberry pi system to run webhook_listner.py 24/7.
 I recommend you to setup firewall and all necessary security setup as well due to smee.
