@@ -33,9 +33,14 @@ Alerts from TradingView should look like this:
 **{"strategy":"darvasbox"}**
 
 # Usage
+You have to run webhook_listner.py on your localhost.
 
 ```bash
 python webhook_listner.py
+```
+
+You have to run checker_xxx.py every x hour manually.
+```bash
 python checker_BICwA.py
 python checker_darvasbox.py
 ```
