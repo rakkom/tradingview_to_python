@@ -1,5 +1,4 @@
 import os
-import bybit
 import json
 import argparse
 import pybit
