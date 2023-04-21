@@ -146,43 +146,19 @@ sudo systemctl start cron
 ```
 
 # Comments
-If you employ TradingView alerts for both buy and sell orders, setting up Cron is not necessary. However, you will need to modify the alert to include "side" data and subsequently adjust webhook_listener.py to accommodate these changes.
+If you employ TradingView alerts for both buy and sell orders, setting up Cron is not necessary. 
 
 ## TradvingView Alert format
 The alerts from TradingView should appear as follows:
 
-**{"strategy":"strategy_for_buy&sell","side":"{{strategy.order.action}}"}**
+**{{"strategy":"buy_and_sell","side":"sell","ticker":"DOGEUSDT"}**
 
-## webhook_listner.py
-To accomplish this, you will need to pass the "side" data from the webhook to the "strategy_for_buy&sell.py" file.
+## Prepare JSON files
+ticker_file/dogeusdt.json
 
-```python
-def handle_webhook():
-    data = request.json
-    strategy = data.get("strategy")
-    side = data.get("side")
-
-    if strategy == "strategy_for_buy&sell":
-        subprocess.run(["python", "buy_and_sell.py", "--side", side])
-    elif strategy == "BICwA":
-        subprocess.run(["python", "BICwA.py"])
-
-    return "OK"
- ```
-
-## buy_and_sell.py
-To be able to use the "side" data as an argument, you should include the following code in "buy_and_sell.py".
-
-```python
-import argparse
-
-# Define the argument
-parser = argparse.ArgumentParser()
-parser.add_argument("--side", help="Side parameter")
-
-# Parse and get the value of the argument
-args = parser.parse_args()
-
-# Display the value of the argument
-print("Side parameter:", args.side)
+```json
+{
+    "qty":"500"
+}
 ```
+
