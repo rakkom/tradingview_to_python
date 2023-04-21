@@ -59,10 +59,11 @@ has_long_position = False
 has_short_position = False
 
 for position in positions:
-    if position['side'].lower() == 'buy' and float(position['size']) > 0:
-        has_long_position = True
-    elif position['side'].lower() == 'sell' and float(position['size']) > 0:
-        has_short_position = True
+    if position['symbol'] == ticker:
+        if position['side'].lower() == 'buy' and float(position['size']) > 0:
+            has_long_position = True
+        elif position['side'].lower() == 'sell' and float(position['size']) > 0:
+            has_short_position = True
 
 if side == "buy":
     if has_short_position:
