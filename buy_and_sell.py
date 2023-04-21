@@ -26,38 +26,56 @@ session = HTTP(
     api_secret=config.api_secret,
 )
 
+positions = session.get_positions(
+    category="linear",
+    symbol=ticker,
+)
+
+has_long_position = False
+has_short_position = False
+
+for position in positions:
+    if position['side'].lower() == 'buy' and float(position['size']) > 0:
+        has_long_position = True
+    elif position['side'].lower() == 'sell' and float(position['size']) > 0:
+        has_short_position = True
+
 if side.lower() == "buy":
-    print(session.place_order(
-        category="linear",
-        symbol=ticker,
-        side="Buy",
-        orderType="Market",
-        qty=settings["qty"],
-        reduce_only=True
-    ))
-    print(session.place_order(
-        category="linear",
-        symbol=ticker,
-        side="Buy",
-        orderType="Market",
-        qty=settings["qty"],
-        reduce_only=False
-    ))
+    if has_short_position:
+        print(session.place_order(
+            category="linear",
+            symbol=ticker,
+            side="Buy",
+            orderType="Market",
+            qty=settings["qty"],
+            reduce_only=True
+        ))
+    else:
+        print(session.place_order(
+            category="linear",
+            symbol=ticker,
+            side="Buy",
+            orderType="Market",
+            qty=settings["qty"],
+            reduce_only=False
+        ))
 
 if side.lower() == "sell":
-    print(session.place_order(
-        category="linear",
-        symbol=ticker,
-        side="Sell",
-        orderType="Market",
-        qty=settings["qty"],
-        reduce_only=True
-    ))
-    print(session.place_order(
-        category="linear",
-        symbol=ticker,
-        side="Sell",
-        orderType="Market",
-        qty=settings["qty"],
-        reduce_only=False
-    ))
+    if has_long_position:
+        print(session.place_order(
+            category="linear",
+            symbol=ticker,
+            side="Sell",
+            orderType="Market",
+            qty=settings["qty"],
+            reduce_only=True
+        ))
+    else:
+        print(session.place_order(
+            category="linear",
+            symbol=ticker,
+            side="Sell",
+            orderType="Market",
+            qty=settings["qty"],
+            reduce_only=False
+        ))
