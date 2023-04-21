@@ -24,7 +24,7 @@ parser.add_argument("--side", help="Trade side (Buy or Sell)", choices=["buy", "
 parser.add_argument("--ticker", help="Ticker symbol")
 args = parser.parse_args()
 side = args.side.lower()
-ticker = args.ticker
+ticker = args.ticker.upper()
 
 if not ticker:
     print("Ticker symbol is required")
