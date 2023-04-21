@@ -1,4 +1,3 @@
-jenok@raspberrypi:~ $ cat buy_and_sell.py 
 import os
 import bybit
 import json
