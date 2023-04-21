@@ -18,7 +18,8 @@ def handle_webhook():
 
         elif strategy == "buy_and_sell":
             side = data.get("side")
-            subprocess.run(["python", "buy_and_sell.py", "--side", side])
+            ticker = data.get("ticker")
+            subprocess.run(["python", "buy_and_sell.py", "--side", side, "--ticker", ticker])
 
         else:
             # raise an exception if strategy is not recognized
