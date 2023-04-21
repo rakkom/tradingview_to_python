@@ -67,10 +67,12 @@ for position in positions:
 if side == "buy":
     if has_short_position:
         place_order(session, "Buy", ticker, settings, reduce_only=True)
+        place_order(session, "Buy", ticker, settings)
     else:
         place_order(session, "Buy", ticker, settings)
 elif side == "sell":
     if has_long_position:
         place_order(session, "Sell", ticker, settings, reduce_only=True)
+        place_order(session, "Sell", ticker, settings)
     else:
         place_order(session, "Sell", ticker, settings)
