@@ -9,13 +9,16 @@ def handle_webhook():
     try:
         data = request.json
         strategy = data.get("strategy")
-        side = data.get("side")
 
         if strategy == "BICwA":
             subprocess.run(["python", "BICwA.py"])
 
         elif strategy == "darvasbox":
             subprocess.run(["python", "darvasbox.py"])
+
+        elif strategy == "buy_and_sell":
+            side = data.get("side")
+            subprocess.run(["python", "buy_and_sell.py", "--side", side])
 
         else:
             # raise an exception if strategy is not recognized
