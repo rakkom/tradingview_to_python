@@ -163,15 +163,15 @@ def handle_webhook():
     side = data.get("side")
 
     if strategy == "strategy_for_buy&sell":
-        subprocess.run(["python", "strategy_for_buy&sell.py", "--side", side])
+        subprocess.run(["python", "buy_and_sell.py", "--side", side])
     elif strategy == "BICwA":
         subprocess.run(["python", "BICwA.py"])
 
     return "OK"
  ```
 
-## strategy_for_buy&sell.py
-To be able to use the "side" data as an argument, you should include the following code in "strategy_for_buy&sell.py".
+## buy_and_sell.py
+To be able to use the "side" data as an argument, you should include the following code in "buy_and_sell.py".
 
 ```python
 import argparse
