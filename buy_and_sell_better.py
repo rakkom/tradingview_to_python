@@ -20,18 +20,21 @@ def place_order(session, side, ticker, qty, reduce_only=False):
         print(f"Error placing {side} order: {e}")
 
 def execute_order(session, side, ticker, qty, has_long_position=False, has_short_position=False):
-    if side == "buy":
-        if has_short_position:
-            place_order(session, "Buy", ticker, qty, reduce_only=True)
-            place_order(session, "Buy", ticker, qty)
-        else:
-            place_order(session, "Buy", ticker, qty)
-    elif side == "sell":
-        if has_long_position:
-            place_order(session, "Sell", ticker, qty, reduce_only=True)
-            place_order(session, "Sell", ticker, qty)
-        else:
-            place_order(session, "Sell", ticker, qty)
+    try:
+        if side == "buy":
+            if has_short_position:
+                place_order(session, "Buy", ticker, qty, reduce_only=True)
+                place_order(session, "Buy", ticker, qty)
+            else:
+                place_order(session, "Buy", ticker, qty)
+        elif side == "sell":
+            if has_long_position:
+                place_order(session, "Sell", ticker, qty, reduce_only=True)
+                place_order(session, "Sell", ticker, qty)
+            else:
+                place_order(session, "Sell", ticker, qty)
+    except Exception as e:
+        Print("Error getting side info")
             
 parser = argparse.ArgumentParser()
 parser.add_argument("--side", help="Trade side (Buy or Sell)", choices=["buy", "sell"])
