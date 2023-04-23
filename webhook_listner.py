@@ -22,13 +22,6 @@ def handle_webhook():
             qty = data.get("qty")
             subprocess.run(["python", "buy_and_sell.py", "--side", side, "--ticker", ticker, "--qty", qty])           
             
-            '''
-            if data.get("reduce"):
-                subprocess.run(["python", "buy_and_sell.py", "--side", side, "--ticker", ticker, "--qty", qty, "--reduce", reduce])
-            else:
-                subprocess.run(["python", "buy_and_sell.py", "--side", side, "--ticker", ticker, "--qty", qty])
-            '''
-            
         else:
             # raise an exception if strategy is not recognized
             raise ValueError("Invalid strategy")
