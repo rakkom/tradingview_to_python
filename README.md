@@ -60,6 +60,8 @@ python webhook_listner.py
 You need to run this command, as well, for the smee connection.
 
 ```bash
+npm install --global smee-client
+
 smee --url https://smee.io/YOURSMEEURL --target http://localhost:5000/webhook
 ```
 
