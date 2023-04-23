@@ -3,8 +3,7 @@ from pybit.unified_trading import HTTP
 
 def place_order(session, ticker, side, qty, reduce_only=False):
     try:
-        r = session.place_order(category="linear", symbol=ticker, side=side, orderType="Market", qty=qty, reduce_only=reduce_only)
-        print(r)
+        print(session.place_order(category="linear", symbol=ticker, side=side, orderType="Market", qty=qty, reduce_only=reduce_only))
     except Exception as e:
         print(f"Error placing {side} order: {e}")
 
