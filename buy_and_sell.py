@@ -5,14 +5,14 @@ import pybit
 import config
 from pybit.unified_trading import HTTP
 
-def place_order(session, side, ticker, settings, reduce_only=False):
+def place_order(session, side, ticker, qty, reduce_only=False):
     try:
         response = session.place_order(
             category="linear",
             symbol=ticker,
             side=side,
             orderType="Market",
-            qty=settings["qty"],
+            qty=qty,
             reduce_only=reduce_only
         )
         print(response)
@@ -22,21 +22,16 @@ def place_order(session, side, ticker, settings, reduce_only=False):
 parser = argparse.ArgumentParser()
 parser.add_argument("--side", help="Trade side (Buy or Sell)", choices=["buy", "sell"])
 parser.add_argument("--ticker", help="Ticker symbol")
+parser.add_argument("--qty", help="Quantity")
 args = parser.parse_args()
+
 side = args.side.lower()
 ticker = args.ticker.upper()
+qty = args.qty
 
 if not ticker:
     print("Ticker symbol is required")
     exit(1)
-
-ticker_filename = ticker.lower() + ".json"
-
-try:
-    with open(os.path.join("ticker_file", ticker_filename), "r") as f:
-        settings = json.load(f)
-except FileNotFoundError:
-    settings = {"qty": "1"}
 
 session = HTTP(
     testnet=False,
@@ -66,13 +61,13 @@ for position in positions:
 
 if side == "buy":
     if has_short_position:
-        place_order(session, "Buy", ticker, settings, reduce_only=True)
-        place_order(session, "Buy", ticker, settings)
+        place_order(session, "Buy", ticker, qty, reduce_only=True)
+        place_order(session, "Buy", ticker, qty)
     else:
-        place_order(session, "Buy", ticker, settings)
+        place_order(session, "Buy", ticker, qty)
 elif side == "sell":
     if has_long_position:
-        place_order(session, "Sell", ticker, settings, reduce_only=True)
-        place_order(session, "Sell", ticker, settings)
+        place_order(session, "Sell", ticker, qty, reduce_only=True)
+        place_order(session, "Sell", ticker, qty)
     else:
-        place_order(session, "Sell", ticker, settings)
+        place_order(session, "Sell", ticker, qty)
