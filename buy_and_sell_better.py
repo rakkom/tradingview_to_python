@@ -51,16 +51,12 @@ except Exception as e:
 has_long_position = False
 has_short_position = False
 
-try:
-    for position in positions:
-        if position['symbol'] == ticker:
-            if position['side'].lower() == 'buy' and float(position['size']) > 0:
-                has_long_position = True
-            elif position['side'].lower() == 'sell' and float(position['size']) > 0:
-                has_short_position = True       
-except Exception as e:
-    print("Error caused by fetching position failure")
-    exit(1)
+for position in positions:
+    if position['symbol'] == ticker:
+        if position['side'].lower() == 'buy' and float(position['size']) > 0:
+            has_long_position = True
+        elif position['side'].lower() == 'sell' and float(position['size']) > 0:
+            has_short_position = True       
 
 if side == "Buy":
     if has_short_position:
