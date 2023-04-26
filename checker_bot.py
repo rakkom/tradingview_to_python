@@ -18,7 +18,7 @@ print(f"CRON job executed at: {current_timestamp}")
 end_timestamp = datetime.fromtimestamp(datetime.now().timestamp())
 
 # Load order records from JSON file. Pay attention to the name of the json file
-with open('/home/user/order_records_darvasbox.json', 'r') as f:
+with open('/home/user/order_records_bot.json', 'r') as f:
     order_records = json.load(f)
 
 print('')
