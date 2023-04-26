@@ -1,11 +1,11 @@
-# Overview
+# Overview for SPOT (not working currently)
 This bot is designed to receive alerts from **TradingView** via webhook and execute Python code to place orders on a **Raspberry Pi**. It utilizes the **Bybit exchange** and operates with the **BTCUSDC** (SPOT) trading pair. Notably, USDC pairs are exempt from trading fees. The setup details for the Raspberry Pi will not be covered in this explanation. BICwA and darvasbox are the names of strategies employed within the TradingView platform.
 
 1. TradingView --webhook--> smee --webhook--> webhook_listner.py on localhost (raspberry pi)
 
-2. webhook_listner.py --> BICwA.py **OR** darvasbox.py
+2. webhook_listner.py --> bot.py
 
-3. cron --> checker_BICwA.py **AND** checker_darvasbox.py
+3. cron --> checker_bot.py
 
 ## Descriptions for each code segment
 1. Receives webhook alerts from TradingView.
@@ -30,9 +30,7 @@ In this example, I employed the BICwA and darvasbox strategies as samples. Howev
 ## TradvingView Alert format
 The alerts from TradingView should appear as follows:
 
-**{"strategy":"BICwA"}**
-
-**{"strategy":"darvasbox"}**
+**{"strategy":"bot"}**
 
 # § Usage: manual version 
 
@@ -68,8 +66,7 @@ smee --url https://smee.io/YOURSMEEURL --target http://localhost:5000/webhook
 Additionally, you need to manually run checker_xxx.py every x hours.
 
 ```bash
-python checker_BICwA.py
-python checker_darvasbox.py
+python checker_bot.py
 ```
 
 # § Usage: automatic version
@@ -131,14 +128,12 @@ crontab -e
 Configure the time settings for Cron. You can simply copy and paste the content into the file, but ensure that you replace the asterisks (*) with the desired values.
 
 ```bash
-* * * * * /home/user/checker_BICwA.py >> /home/user/cronjob_BICwA.log 2>&1
-* * * * * /home/user/checker_darvasbox.py >> /home/user/cronjob_darvasbox.log 2>&1
+* * * * * /home/user/checker_bot.py >> /home/user/cronjob_bot.log 2>&1
 ```
 
 Grant the necessary permissions for the Python code to be executed by Cron.
 ```bash
-chmod +x /home/user/checker_BICwA.py
-chmod +x /home/user/checker_darvasbox.py
+chmod +x /home/user/checker_bot.py
 ```
 
 Verify the status of Cron and initiate it. Remember, you must manually start Cron.
@@ -147,20 +142,14 @@ sudo systemctl status cron
 sudo systemctl start cron
 ```
 
-# Comments
+# Overview for USDT PERP
 If you employ TradingView alerts for both buy and sell orders, setting up Cron is not necessary. 
+Use buy_and_sell.py or buy_and_sell_with_reduce.py upon your preference.
 
 ## TradvingView Alert format
 The alerts from TradingView should appear as follows:
 
 **{{"strategy":"buy_and_sell","side":"sell","ticker":"DOGEUSDT"}**
 
-## Prepare JSON files
-ticker_file/dogeusdt.json
-
-```json
-{
-    "qty":"500"
-}
-```
+**{{"strategy":"buy_and_sell_with_reduce","side":"sell","ticker":"DOGEUSDT"}**
 
