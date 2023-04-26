@@ -144,6 +144,8 @@ sudo systemctl start cron
 
 # Overview for USDT PERP
 If you employ TradingView alerts for both buy and sell orders, setting up Cron is not necessary. 
+Just set up webhook_listner.py and smee for this purposes.
+
 Use buy_and_sell.py or buy_and_sell_with_reduce.py upon your preference.
 
 ## TradvingView Alert format
