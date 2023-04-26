@@ -13,7 +13,7 @@ session_auth = spot.HTTP(
 )
 
 # check if json exits or not, each strategy needs each json file, so if you want to implement two or more strategies, you need another file
-order_records_file = "order_records_darvasbox.json"
+order_records_file = "order_records_bot.json"
 if os.path.exists(order_records_file):
     with open(order_records_file, "r") as f:
         order_records = json.load(f)
