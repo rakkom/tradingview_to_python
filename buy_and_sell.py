@@ -23,15 +23,12 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--side", help="Trade side (Buy or Sell)", choices=["buy", "sell"])
 parser.add_argument("--ticker", help="Ticker symbol")
 parser.add_argument("--qty", help="Quantity")
+
 args = parser.parse_args()
 
 side = args.side.lower()
 ticker = args.ticker.upper()
 qty = args.qty
-
-if not ticker:
-    print("Ticker symbol is required")
-    exit(1)
 
 session = HTTP(
     testnet=False,
